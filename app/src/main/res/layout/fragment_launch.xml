@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.android.politicalpreparedness.MainActivity">
+
+        <!-- DONE: Add image for home screen logo. -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="408dp"
+            android:layout_height="406dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ballot_logo"
+            android:contentDescription="@string/ballot_box" />
+
+        <!-- DONE: Add Button to navigate to upcoming elections. -->
+        <Button
+            android:id="@+id/elections_button"
+            android:layout_width="378dp"
+            android:layout_height="49dp"
+            android:text="@string/upcoming_elections"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="556dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/imageView"/>
+
+        <!-- DONE: Add Button to navigate to representatives. -->
+        <Button
+            android:id="@+id/representatives_button"
+            android:layout_width="378dp"
+            android:layout_height="49dp"
+            android:text="@string/find_my_representatives"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="556dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:layout_constraintTop_toBottomOf="@id/elections_button"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
