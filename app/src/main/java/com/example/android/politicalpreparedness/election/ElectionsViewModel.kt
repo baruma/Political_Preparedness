@@ -1,24 +1,23 @@
 package com.example.android.politicalpreparedness.election
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.database.ElectionsRepository
+import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.jsonadapter.Mapper
-import com.example.android.politicalpreparedness.network.models.Election
 import kotlinx.coroutines.launch
 
 //DONE: Construct ViewModel and provide election datasource
 class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel() {
 
     //DONE: Create live data val for upcoming elections
-    private var _electionResponse = MutableLiveData<List<Election>>()
+    private var _electionResponse = MutableLiveData<List<DomainElection>>()
 
     //DONE: Create live data val for saved elections
-    val electionResponse: LiveData<List<Election>>
+    val electionResponse: LiveData<List<DomainElection>>
         get() = _electionResponse
 
 
@@ -36,22 +35,12 @@ class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel
     Map Response to Domain Model
     Send Domain Model data to UI
      */
+
     fun callAPIForElections() {
         viewModelScope.launch {
-           val elections =  Mapper.map(CivicsApi.retrofitService.getElections())
-            _electionResponse.postValue(elections)
+            val domainElections = Mapper.mapFromElectionResponseToDomainElection(CivicsApi.retrofitService.getElections())
+            // map this from election response to domain election list
+            _electionResponse.postValue(domainElections)
         }
     }
-
-
-//    private fun getPictureOfTheDay() {
-//        viewModelScope.launch {
-//            try {
-//                val pictureOfDay = PictureOfDayAPI.retrofitService.getPictureOfDay()
-//                _pictureResponse.value = pictureOfDay
-//            } catch (exception: Exception) {
-//                print("Failure: ${exception.message}")
-//            }
-//        }
-//    }
 }

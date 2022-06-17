@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.election.adapter
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,21 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.ElectionViewHolderBinding
 import com.example.android.politicalpreparedness.election.ElectionOnClickInterface
-import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.ElectionEntity
 import java.util.*
 
 
-class ElectionListAdapter(): ListAdapter<Election, ElectionViewHolder>(ElectionDiffCallback) {
+class ElectionListAdapter(): ListAdapter<ElectionEntity, ElectionViewHolder>(ElectionDiffCallback) {
     //DONE: Add companion object to inflate ViewHolder (from)
 
     //DONE: Create ElectionDiffCallback
-    companion object ElectionDiffCallback : DiffUtil.ItemCallback<Election>() {
+    companion object ElectionDiffCallback : DiffUtil.ItemCallback<ElectionEntity>() {
 
-        override fun areItemsTheSame(oldItem: Election, newItem: Election): Boolean {
+        override fun areItemsTheSame(oldItem: ElectionEntity, newItem: ElectionEntity): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Election, newItem: Election): Boolean {
+        override fun areContentsTheSame(oldItem: ElectionEntity, newItem: ElectionEntity): Boolean {
             return oldItem == newItem
         }
     }
@@ -67,16 +66,16 @@ class ElectionViewHolder(private val binding: ElectionViewHolderBinding)
     // nested inside the UserAdapter class to keep things tidy
 
     // DONE: Make XML first to generate binding
-    var electionToPush: Election? = null
+    var electionEntityToPush: ElectionEntity? = null
     // TODO: Connect XML to This ViewHolder
 
     init {
         itemView.setOnClickListener(this)
     }
 
-    fun bind(election: Election) {
-        binding.election = election
-        electionToPush = election
+    fun bind(electionEntity: ElectionEntity) {
+        binding.election = electionEntity
+        electionEntityToPush = electionEntity
         binding.executePendingBindings()
     }
 

@@ -1,15 +1,14 @@
 package com.example.android.politicalpreparedness.network.jsonadapter
 
+import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.network.models.Division
-import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.ElectionAPIModel
+import com.example.android.politicalpreparedness.network.models.ElectionEntity
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
 import java.util.Date
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 
 
 class ElectionAdapter {
@@ -52,8 +51,31 @@ class DateAdapter {
 }
 
 object Mapper {
-    fun map(electionFromAPI: ElectionResponse): List<Election> {
-       return electionFromAPI.elections
-    }
+    fun mapFromElectionResponseToDomainElection(APIPayload: ElectionResponse): List<DomainElection> {
+        val electionEntities = APIPayload.electionEntities
 
+        val domainElections = electionEntities.map { electionAPIModel ->
+            DomainElection(
+                electionAPIModel.id,
+                electionAPIModel.name,
+                electionAPIModel.electionDay as java.sql.Date,
+                electionAPIModel.division
+            )
+        }
+
+        return domainElections
+    }
 }
+
+//    suspend fun deleteElections(elections: List<DomainElection>) {
+//        val databaseElections = elections.map { domainElection ->
+//            Election(
+//                domainElection.id,
+//                domainElection.name,
+//                domainElection.electionDay,
+//                domainElection.division
+//            )
+//        }
+//        return database.electionDao.deleteElections(databaseElections)
+//    }
+

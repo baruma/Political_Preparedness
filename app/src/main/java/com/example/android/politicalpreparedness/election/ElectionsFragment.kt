@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
-import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.network.models.ElectionEntity
 import org.koin.android.ext.android.inject
 
 interface ElectionOnClickInterface {
-    fun electionOnClick(position: Int, election: Election?)
+    fun electionOnClick(position: Int, electionEntity: ElectionEntity?)
 }
 
 class ElectionsFragment: Fragment() {
@@ -51,11 +52,13 @@ class ElectionsFragment: Fragment() {
 
         //TODO: Populate recycler adapters
 
-        val observer: Observer<List<Election>> =
-            Observer<List<Election>> { elections ->
+        // Create observer
+        val observer: Observer<List<DomainElection>> =
+            Observer<List<DomainElection>> { elections ->
                 recyclerAdapter.submitList(elections)
             }
 
+        // Observe
         electionsListViewModel.electionResponse.observe(viewLifecycleOwner, observer)
 
         electionsListViewModel.callAPIForElections()
@@ -63,7 +66,7 @@ class ElectionsFragment: Fragment() {
         return root
     }
 
-    private fun handleElectionData(election: Election) {
+    private fun handleElectionData(electionEntity: ElectionEntity) {
 
     }
 

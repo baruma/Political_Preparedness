@@ -1,10 +1,11 @@
 package com.example.android.politicalpreparedness.election
 
-import com.example.android.politicalpreparedness.database.DomainModels.DomainElection
-import com.example.android.politicalpreparedness.network.models.Election
+import com.example.android.politicalpreparedness.database.domainModels.DomainElection
+import com.example.android.politicalpreparedness.network.models.ElectionEntity
+import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import java.sql.Date
 
-fun Election.asDomainModel(): DomainElection {
+fun ElectionEntity.asDomainModel(): DomainElection {
     return DomainElection(
         id = this.id,
         name = this.name,
@@ -13,12 +14,16 @@ fun Election.asDomainModel(): DomainElection {
     )
 }
 
-fun DomainElection.asDatabaseModel(): Election {
+fun DomainElection.asDatabaseModel(): ElectionEntity {
     //return AlarmEntity(id, wakeUpMethod, hoursOfSleep, days, vibration, sound )
-    return Election(
+    return ElectionEntity(
         id,
         name,
         electionDay,
         division
     )
+}
+
+fun convertElectionResponseToDomainElection(electionResponse: List<ElectionResponse>) {
+
 }

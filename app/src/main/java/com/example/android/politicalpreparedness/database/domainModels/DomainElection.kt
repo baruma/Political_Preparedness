@@ -1,4 +1,4 @@
-package com.example.android.politicalpreparedness.database.DomainModels
+package com.example.android.politicalpreparedness.database.domainModels
 
 import java.sql.Date
 
