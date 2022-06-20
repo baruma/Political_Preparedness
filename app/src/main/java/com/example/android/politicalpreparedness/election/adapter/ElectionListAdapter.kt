@@ -10,23 +10,24 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.databinding.ElectionViewHolderBinding
 import com.example.android.politicalpreparedness.election.ElectionOnClickInterface
-import com.example.android.politicalpreparedness.network.models.ElectionEntity
+import com.example.android.politicalpreparedness.election.ElectionsFragmentDirections
 import java.util.*
 
 
-class ElectionListAdapter(): ListAdapter<ElectionEntity, ElectionViewHolder>(ElectionDiffCallback) {
+class ElectionListAdapter(): ListAdapter<DomainElection, ElectionViewHolder>(ElectionDiffCallback) {
     //DONE: Add companion object to inflate ViewHolder (from)
 
     //DONE: Create ElectionDiffCallback
-    companion object ElectionDiffCallback : DiffUtil.ItemCallback<ElectionEntity>() {
+    companion object ElectionDiffCallback : DiffUtil.ItemCallback<DomainElection>() {
 
-        override fun areItemsTheSame(oldItem: ElectionEntity, newItem: ElectionEntity): Boolean {
+        override fun areItemsTheSame(oldItem: DomainElection, newItem: DomainElection): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ElectionEntity, newItem: ElectionEntity): Boolean {
+        override fun areContentsTheSame(oldItem: DomainElection, newItem: DomainElection): Boolean {
             return oldItem == newItem
         }
     }
@@ -66,16 +67,16 @@ class ElectionViewHolder(private val binding: ElectionViewHolderBinding)
     // nested inside the UserAdapter class to keep things tidy
 
     // DONE: Make XML first to generate binding
-    var electionEntityToPush: ElectionEntity? = null
+    var electionEntityToPush: DomainElection? = null
     // TODO: Connect XML to This ViewHolder
 
     init {
         itemView.setOnClickListener(this)
     }
 
-    fun bind(electionEntity: ElectionEntity) {
-        binding.election = electionEntity
-        electionEntityToPush = electionEntity
+    fun bind(domainElection: DomainElection) {
+        binding.election = domainElection
+        electionEntityToPush = domainElection
         binding.executePendingBindings()
     }
 
@@ -84,8 +85,9 @@ class ElectionViewHolder(private val binding: ElectionViewHolderBinding)
 
 //        view!!.context.startActivity(intent)
 
-        view!!.findNavController().navigate(R.id.action_electionsFragment_to_voterInfoFragment)
-//        pushElectionData(Election(2, "test", currentDate.time, "division"))
+//        view!!.findNavController().navigate(R.id.action_electionsFragment_to_voterInfoFragment)
+        view!!.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(electionEntityToPush!!))
+
     }
 
 }

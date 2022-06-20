@@ -6,7 +6,7 @@
     <data>
         <variable
             name="election"
-            type="com.example.android.politicalpreparedness.network.models.ElectionEntity" />
+            type="com.example.android.politicalpreparedness.database.domainModels.DomainElection" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

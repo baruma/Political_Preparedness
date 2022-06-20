@@ -30,12 +30,6 @@ class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel
 
     }
 
-    /*
-    Make API Call
-    Map Response to Domain Model
-    Send Domain Model data to UI
-     */
-
     fun callAPIForElections() {
         viewModelScope.launch {
             val domainElections = Mapper.mapFromElectionResponseToDomainElection(CivicsApi.retrofitService.getElections())

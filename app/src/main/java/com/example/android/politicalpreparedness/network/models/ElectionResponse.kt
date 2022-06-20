@@ -5,5 +5,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class ElectionResponse(
         val kind: String,
-        val electionEntities: List<ElectionAPIModel>
+        val elections: List<ElectionAPIModel>
 )

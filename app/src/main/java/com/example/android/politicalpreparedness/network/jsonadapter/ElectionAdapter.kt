@@ -2,8 +2,6 @@ package com.example.android.politicalpreparedness.network.jsonadapter
 
 import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.network.models.Division
-import com.example.android.politicalpreparedness.network.models.ElectionAPIModel
-import com.example.android.politicalpreparedness.network.models.ElectionEntity
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
@@ -52,13 +50,13 @@ class DateAdapter {
 
 object Mapper {
     fun mapFromElectionResponseToDomainElection(APIPayload: ElectionResponse): List<DomainElection> {
-        val electionEntities = APIPayload.electionEntities
+        val electionEntities = APIPayload.elections
 
         val domainElections = electionEntities.map { electionAPIModel ->
             DomainElection(
                 electionAPIModel.id,
                 electionAPIModel.name,
-                electionAPIModel.electionDay as java.sql.Date,
+                electionAPIModel.electionDay,
                 electionAPIModel.division
             )
         }
