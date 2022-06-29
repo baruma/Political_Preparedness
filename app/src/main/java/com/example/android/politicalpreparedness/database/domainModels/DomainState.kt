@@ -1,13 +1,12 @@
 package com.example.android.politicalpreparedness.database.domainModels
 
 import android.os.Parcelable
+import com.example.android.politicalpreparedness.network.models.Address
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class DomainElection (
-    val id: Int,
+data class DomainState (
     val name: String,
-    val electionDay: Date,
-    val division: DomainDivision,
-) : Parcelable
+    val administrationBody: DomainAdministration
+): Parcelable

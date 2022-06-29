@@ -1,7 +1,7 @@
 package com.example.android.politicalpreparedness.election
 
 import com.example.android.politicalpreparedness.database.domainModels.DomainElection
-import com.example.android.politicalpreparedness.network.models.ElectionEntity
+import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import java.sql.Date
 

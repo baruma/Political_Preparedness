@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.election_view_holder.view.*
 import org.koin.android.ext.android.inject
 
 class VoterInfoFragment : Fragment() {
+    //DONE: Add ViewModel values and create ViewModel
     private val voterInfoViewModel: VoterInfoViewModel by inject()
+    private val electionsViewModel: ElectionsViewModel by inject()
+
     lateinit var binding: FragmentVoterInfoBinding
     val args: VoterInfoFragmentArgs by navArgs()
 
@@ -21,18 +24,16 @@ class VoterInfoFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-//        Log.d("fail", "It fails here")
-        //TODO: Add ViewModel values and create ViewModel
-
         //DONE: Add binding values
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_voter_info, container, false)
         val root: View = binding.root
 
-        //TODO: Populate voter info -- hide views without provided data.
+        //DONE: Populate voter info -- hide views without provided data.
 
-        // Something still goes wrong here.  Also, try passing in data from Fragment?
-        binding.electionName.election_name.text = args.pushElection.name
-        //TODO: Handle loading of URLs
+        binding.electionName.title = args.pushElection.name
+        binding.electionDate.text = args.pushElection.electionDay.toString()
+
+        //TODO: Handle loading of URLs (voting location and ballot information)
 
         //TODO: Handle save button UI state
         //TODO: cont'd Handle save button clicks

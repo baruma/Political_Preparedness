@@ -2,7 +2,7 @@ package com.example.android.politicalpreparedness.database
 
 import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.election.asDatabaseModel
-import com.example.android.politicalpreparedness.network.models.ElectionEntity
+import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
 import java.sql.Date
 
 class ElectionsRepository(private val database: ElectionDatabase) {
@@ -22,7 +22,7 @@ class ElectionsRepository(private val database: ElectionDatabase) {
                 domainElection.id,
                 domainElection.name,
                 domainElection.electionDay,
-                domainElection.division
+                domainElection.division.toString()
             )
         }
         return database.electionDao.insertElections(databaseElectionEntities)

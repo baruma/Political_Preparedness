@@ -4,6 +4,7 @@ import com.example.android.politicalpreparedness.BuildConfig
 import com.example.android.politicalpreparedness.network.jsonadapter.DateAdapter
 import com.example.android.politicalpreparedness.network.jsonadapter.ElectionAdapter
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
+import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -36,13 +37,16 @@ private val retrofit = Retrofit.Builder()
  *  Documentation for the Google Civics API Service can be found at https://developers.google.com/civic-information/docs/v2
  */
 
+
 interface CivicsApiService {
 
     //DONE: Add elections API Call
     @GET("elections?key=$key")
     suspend fun getElections(): ElectionResponse
 
-    //TODO: Add voterinfo API Call
+    //DONE: Add voterinfo API Call
+    @GET("voterinfo?key=$key")
+    suspend fun getVoterInfo(): VoterInfoResponse
 
     //TODO: Add representatives API Call
 

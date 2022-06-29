@@ -1,6 +1,8 @@
-package com.example.android.politicalpreparedness.network.models
+package com.example.android.politicalpreparedness.network.entitymodels
 
 import androidx.room.*
+import com.example.android.politicalpreparedness.database.domainModels.DomainDivision
+import com.example.android.politicalpreparedness.network.models.Division
 import com.squareup.moshi.*
 import java.util.*
 

@@ -1,5 +1,6 @@
 package com.example.android.politicalpreparedness.election
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.database.ElectionsRepository
 import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.network.CivicsApi
-import com.example.android.politicalpreparedness.network.jsonadapter.Mapper
+import com.example.android.politicalpreparedness.network.mapper.ApiToDomainMapper
 import kotlinx.coroutines.launch
 
 //DONE: Construct ViewModel and provide election datasource
@@ -32,9 +33,16 @@ class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel
 
     fun callAPIForElections() {
         viewModelScope.launch {
-            val domainElections = Mapper.mapFromElectionResponseToDomainElection(CivicsApi.retrofitService.getElections())
+            val domainElections = ApiToDomainMapper.mapFromElectionResponseToDomainElection(CivicsApi.retrofitService.getElections())
             // map this from election response to domain election list
             _electionResponse.postValue(domainElections)
+        }
+    }
+
+    fun callForVoterInfo() {
+        viewModelScope.launch {
+            CivicsApi.retrofitService.getVoterInfo()
+            Log.d("voterinfo", CivicsApi.retrofitService.getVoterInfo().toString())
         }
     }
 }

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- DONE: Add data binding node for Voter Info ViewModel -->
-    <data>
-        <variable
-            name= "viewModel"
-            type= "com.example.android.politicalpreparedness.election.VoterInfoViewModel" />
-    </data>
+<!--    <data>-->
+<!--        <variable-->
+<!--            name= "viewModel"-->
+<!--            type= "com.example.android.politicalpreparedness.election.VoterInfoViewModel" />-->
+<!--    </data>-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:padding="@dimen/default_padding"
             android:singleLine="true"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text= "California Presidential Primary Election" />
+            tools:text= "California Presidential Primary Election"/>
 
         <!-- TODO: Add visual styling -->
         <TextView

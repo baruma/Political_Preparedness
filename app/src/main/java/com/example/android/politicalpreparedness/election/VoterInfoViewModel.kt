@@ -7,8 +7,6 @@ import com.example.android.politicalpreparedness.database.ElectionDao
 import com.example.android.politicalpreparedness.network.models.State
 
 class VoterInfoViewModel(private val dataSource: ElectionDao) : ViewModel() {
-    //DONE: Add live data to hold voter info
-    val statesLiveData = MutableLiveData<State>()
 
     //TODO: Add var and methods to populate voter info
 

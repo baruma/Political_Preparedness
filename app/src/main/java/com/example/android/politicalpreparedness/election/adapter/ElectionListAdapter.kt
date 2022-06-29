@@ -1,6 +1,7 @@
 package com.example.android.politicalpreparedness.election.adapter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +15,13 @@ import com.example.android.politicalpreparedness.database.domainModels.DomainEle
 import com.example.android.politicalpreparedness.databinding.ElectionViewHolderBinding
 import com.example.android.politicalpreparedness.election.ElectionOnClickInterface
 import com.example.android.politicalpreparedness.election.ElectionsFragmentDirections
+import com.example.android.politicalpreparedness.election.ElectionsViewModel
 import java.util.*
 
-
+// Are there good alternatives to passing viewmodels to adapters from their corresponding fragments?
+// Lambda doesn't work here - it passes actions, not data.
 class ElectionListAdapter(): ListAdapter<DomainElection, ElectionViewHolder>(ElectionDiffCallback) {
     //DONE: Add companion object to inflate ViewHolder (from)
-
     //DONE: Create ElectionDiffCallback
     companion object ElectionDiffCallback : DiffUtil.ItemCallback<DomainElection>() {
 
@@ -59,6 +61,7 @@ class ElectionListAdapter(): ListAdapter<DomainElection, ElectionViewHolder>(Ele
 //DONE: Create ElectionViewHolder
 
 //DONE: Create ElectionListener
+// TODO: Refactor this so you're passing Lambdas.  Not viewModels.
 class ElectionViewHolder(private val binding: ElectionViewHolderBinding)
     : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
     private val mCommunicator: ElectionOnClickInterface? = null
@@ -67,8 +70,8 @@ class ElectionViewHolder(private val binding: ElectionViewHolderBinding)
     // nested inside the UserAdapter class to keep things tidy
 
     // DONE: Make XML first to generate binding
+    // DONE: Connect XML to This ViewHolder
     var electionEntityToPush: DomainElection? = null
-    // TODO: Connect XML to This ViewHolder
 
     init {
         itemView.setOnClickListener(this)
@@ -83,11 +86,7 @@ class ElectionViewHolder(private val binding: ElectionViewHolderBinding)
     override fun onClick(view: View?) {
         val currentDate = Calendar.getInstance()
 
-//        view!!.context.startActivity(intent)
-
-//        view!!.findNavController().navigate(R.id.action_electionsFragment_to_voterInfoFragment)
         view!!.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(electionEntityToPush!!))
-
     }
 
 }
