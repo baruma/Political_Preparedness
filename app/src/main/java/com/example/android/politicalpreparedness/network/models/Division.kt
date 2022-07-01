@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class Division(
         val id: String,
         val country: String,
-        val state: State
+        val state: String
 ) : Parcelable

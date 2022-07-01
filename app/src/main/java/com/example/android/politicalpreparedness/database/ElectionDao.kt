@@ -2,6 +2,7 @@ package com.example.android.politicalpreparedness.database
 
 import androidx.room.*
 import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
+import com.example.android.politicalpreparedness.network.entitymodels.entityRelationships.ElectionAndDivision
 
 @Dao
 interface ElectionDao {
@@ -16,6 +17,10 @@ interface ElectionDao {
     //DONE: Add select single election query
     @Query("SELECT * FROM election_table ORDER BY id DESC")
     suspend fun getAllElections(): List<ElectionEntity>
+
+    @Transaction
+    @Query("SELECT * FROM election_table")
+    suspend fun getAllElectionAndDivisionRelations(): List<ElectionAndDivision>
 
     //DONE: Add delete query
     @Delete

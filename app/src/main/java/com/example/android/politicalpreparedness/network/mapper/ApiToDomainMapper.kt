@@ -37,7 +37,7 @@ object ApiToDomainMapper {
         return DomainDivision(
             apiDivision.id,
             apiDivision.country,
-            mapFromAPIStateToDomainState(apiDivision.state)
+            apiDivision.state
         )
     }
 
@@ -52,7 +52,8 @@ object ApiToDomainMapper {
                 electionAPIModel.id,
                 electionAPIModel.name,
                 electionAPIModel.electionDay,
-                mapFromAPIDivisionToDomainDivision(electionAPIModel.division)
+                electionAPIModel.division,
+                null //TODO
             )
         }
 

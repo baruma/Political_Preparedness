@@ -9,7 +9,7 @@ import java.util.*
 @Entity(tableName = "election_table")
 data class ElectionEntity(
         @PrimaryKey val id: Int,
-        @ColumnInfo(name = "name")val name: String,
-        @ColumnInfo(name = "electionDay")val electionDay: Date,
-        @Json(name="ocdDivisionId") val division: String
+        @ColumnInfo(name = "name") val name: String,
+        @ColumnInfo(name = "electionDay" ) val electionDay: Date,
+        @Json(name="ocdDivisionId") val divisionID: String
 )

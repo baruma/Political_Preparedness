@@ -64,7 +64,7 @@ class ElectionsFragment: Fragment() {
         electionsListViewModel.electionResponse.observe(viewLifecycleOwner, observer)
 
         electionsListViewModel.callAPIForElections()
-        electionsListViewModel.callForVoterInfo()
+        //electionsListViewModel.callForVoterInfo()
 
         return root
     }

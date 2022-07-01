@@ -9,5 +9,6 @@ data class DomainElection (
     val id: Int,
     val name: String,
     val electionDay: Date,
-    val division: DomainDivision,
+    val divisionId: String,
+    val division: DomainDivision?,
 ) : Parcelable

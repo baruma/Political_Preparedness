@@ -3,6 +3,7 @@ package com.example.android.politicalpreparedness.database
 import com.example.android.politicalpreparedness.database.domainModels.DomainElection
 import com.example.android.politicalpreparedness.election.asDatabaseModel
 import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
+import com.example.android.politicalpreparedness.network.entitymodels.entityRelationships.ElectionAndDivision
 import java.sql.Date
 
 class ElectionsRepository(private val database: ElectionDatabase) {
@@ -32,17 +33,16 @@ class ElectionsRepository(private val database: ElectionDatabase) {
 //        return database.electionDao.insertElections(elections)
 //    }
 
-    suspend fun loadElections(databaseElectionEntities: List<ElectionEntity>): List<DomainElection> {
-        val domainElections = databaseElectionEntities.map { databaseElection ->
-            DomainElection(
-                databaseElection.id,
-                databaseElection.name,
-                databaseElection.electionDay as Date,
-                databaseElection.division
-            )
-        }
-        return domainElections
+    suspend fun loadElections(): List<DomainElection> {
+        database.electionDao.getAllElections()
+//        val domainElections = databaseElectionEntities.map { electionAndDivision ->
+//            ElectionAndDivision(
+//                elec
+//            )
+//        }
+//
 //        return database.electionDao.getAllDomainElections()  // This is likely incorrect because how are you going to get domain models out of a database
+        return emptyList()
     }
 
 //    suspend fun loadElections(): List<Election> {
@@ -65,7 +65,7 @@ class ElectionsRepository(private val database: ElectionDatabase) {
                 domainElection.id,
                 domainElection.name,
                 domainElection.electionDay,
-                domainElection.division
+                domainElection.divisionId
             )
         }
         return database.electionDao.deleteElections(databaseElectionEntities)

@@ -14,5 +14,5 @@ data class ElectionAPIModel (
     val name: String,
     val electionDay: Date,
     @Json(name="ocdDivisionId")
-    val division: Division
+    val division: String
 )
