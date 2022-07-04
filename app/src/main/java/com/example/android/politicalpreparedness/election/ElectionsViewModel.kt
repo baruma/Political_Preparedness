@@ -30,7 +30,6 @@ class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel
     //TODO: Create functions to navigate to saved or upcoming election voter info
 
     init {
-
     }
 
     fun callAPIForElections() {
@@ -42,6 +41,7 @@ class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel
                 val domainElections = ApiToDomainMapper.mapFromElectionResponseToDomainElection(response.body()!!)
                 // map this from election response to domain election list
                 _electionResponse.postValue(domainElections)
+                Log.d("de", domainElections.toString())
             } else {
                 Log.d("", response.errorBody().toString())
             }

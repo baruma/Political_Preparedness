@@ -38,7 +38,6 @@ private val retrofit = Retrofit.Builder()
  *  Documentation for the Google Civics API Service can be found at https://developers.google.com/civic-information/docs/v2
  */
 
-
 interface CivicsApiService {
 
     //DONE: Add elections API Call
@@ -50,7 +49,6 @@ interface CivicsApiService {
     suspend fun getVoterInfo(): VoterInfoResponse
 
     //TODO: Add representatives API Call
-
 }
 
 object CivicsApi {

@@ -26,7 +26,5 @@ class CivicsHttpClient: OkHttpClient() {
                 }
                 .build()
         }
-
     }
-
 }

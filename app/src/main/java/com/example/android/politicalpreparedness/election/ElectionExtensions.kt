@@ -27,7 +27,7 @@ fun DomainElection.asDatabaseModel(): ElectionEntity {
 }
 
 fun DomainDivision.toDatabaseModel() : DivisionEntity {
-    return DivisionEntity(id, country, this.state)
+    return DivisionEntity(id, country!!, this.state!!)
 }
 
 fun convertElectionResponseToDomainElection(electionResponse: List<ElectionResponse>) {
