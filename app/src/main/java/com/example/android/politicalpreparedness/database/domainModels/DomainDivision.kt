@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 data class DomainDivision (
     val id: String = "",
     val country: String? = "",
-    val state: String? = ""
+    val state: DomainState? = null
 ): Parcelable

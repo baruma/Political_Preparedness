@@ -33,6 +33,9 @@ class VoterInfoFragment : Fragment() {
         binding.electionName.title = args.pushElection.name
         binding.electionDate.text = args.pushElection.electionDay.toString()
 
+
+
+
         //TODO: Handle loading of URLs (voting location and ballot information)
 
         //TODO: Handle save button UI state

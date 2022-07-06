@@ -10,3 +10,6 @@ data class DivisionEntity(
     @ColumnInfo(name = "country") val country: String,
     @ColumnInfo(name = "state") val state: String,  // supposed to be domain state
 )
+
+// Make another label for this view
+// Move on to saving the election

@@ -7,6 +7,9 @@
     <string name="upcoming_elections_label">Upcoming Elections</string>
     <string name="saved_elections">Saved Elections</string>
     <string name="save_election">Save Election</string>
+    <string name="voting_locations">Voting Locations</string>
+    <string name="ballot_info">Ballot Info</string>
+    <string name="election_information">Election Information</string>
 
     <!-- TODO: Add necessary string values -->
 
