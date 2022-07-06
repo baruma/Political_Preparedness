@@ -32,9 +32,10 @@ class VoterInfoFragment : Fragment() {
 
         binding.electionName.title = args.pushElection.name
         binding.electionDate.text = args.pushElection.electionDay.toString()
-
-
-
+        // ballots
+        // TODO: Replace unsafe calls here.
+        binding.stateBallot.text = args.pushElection.division!!.state!!.administrationBody.toString()
+        // locations
 
         //TODO: Handle loading of URLs (voting location and ballot information)
 

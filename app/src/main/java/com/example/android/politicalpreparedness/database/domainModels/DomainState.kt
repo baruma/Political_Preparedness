@@ -8,5 +8,5 @@ import java.util.*
 @Parcelize
 data class DomainState (
     val name: String,
-    val administrationBody: DomainAdministration
+    val administrationBody: DomainAdministration? = null
 ): Parcelable
