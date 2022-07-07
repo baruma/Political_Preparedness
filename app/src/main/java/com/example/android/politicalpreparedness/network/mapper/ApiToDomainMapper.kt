@@ -34,10 +34,11 @@ object ApiToDomainMapper {
     }
 
     fun mapFromAPIDivisionToDomainDivision(apiDivision: Division): DomainDivision {
+
         return DomainDivision(
             apiDivision.id,
             apiDivision.country,
-            apiDivision.state
+
         )
     }
 

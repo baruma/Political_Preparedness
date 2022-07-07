@@ -1,6 +1,7 @@
 package com.example.android.politicalpreparedness.network.models
 
 data class Address (
+        val locationName: String,
         val line1: String,
         val line2: String = "",
         val city: String,

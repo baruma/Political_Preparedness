@@ -26,8 +26,14 @@ fun DomainElection.asDatabaseModel(): ElectionEntity {
     )
 }
 
+/*
+Confusion begins here.  The expected type is String but we're giving it a DomainState object.
+We do need to give the database a string so it can grab stuff through relations.
+
+ */
 fun DomainDivision.toDatabaseModel() : DivisionEntity {
-    return DivisionEntity(id, country!!, this.state!!)
+    // Type mismatch: inferred type is DomainState but String was expected
+    return DivisionEntity(id, country!!, this.state!!.name)
 }
 
 fun convertElectionResponseToDomainElection(electionResponse: List<ElectionResponse>) {

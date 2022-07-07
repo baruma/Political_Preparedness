@@ -9,5 +9,5 @@ data class DomainAdministration (
     val electionInfoURL: String,
     val votingLocationURL: String,
     val ballotInfoURL: String,
-    val correspondenceAddress: DomainAddress
+    val correspondenceAddress: DomainAddress? = null
 ): Parcelable
