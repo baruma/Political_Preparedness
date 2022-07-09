@@ -39,7 +39,7 @@ class VoterInfoFragment : Fragment() {
         // TODO: Figure out how to get objects from database.  Flow: give room a domain object, room gets confused and asks for string, you must give it a string, which will find the domain object's room counterpart.
 //        binding.stateBallot.text = args.pushElection.division!!.state!!.administrationBody!!.ballotInfoURL
         binding.stateBallot.setOnClickListener {
-            getUrlFromIntent(view!!)
+            getUrlFromIntent(requireView())
         }
         // locations
 //        binding.stateLocations.text = args.pushElection.division!!.state!!.administrationBody!!.votingLocationURL

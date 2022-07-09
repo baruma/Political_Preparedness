@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 //DONE: Construct ViewModel and provide election datasource
-class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel() {
+class ElectionsViewModel(private val repository: ElectionsRepository) : ViewModel() {
 
     //DONE: Create live data val for upcoming elections
     private var _electionResponse = MutableLiveData<List<DomainElection>>()
@@ -29,29 +29,36 @@ class ElectionsViewModel(private val repository: ElectionsRepository): ViewModel
 
     //TODO: Create functions to navigate to saved or upcoming election voter info
 
-    init {
-    }
+    init {}
 
     fun callAPIForElections() {
         viewModelScope.launch {
             val response = withContext(Dispatchers.IO) {
                 CivicsApi.retrofitService.getElections()
             }
-            if(response.isSuccessful) {
-                val domainElections = ApiToDomainMapper.mapFromElectionResponseToDomainElection(response.body()!!)
+            if (response.isSuccessful) {
+                val domainElections =
+                    ApiToDomainMapper.mapFromElectionResponseToDomainElection(response.body()!!)
                 // map this from election response to domain election list
                 _electionResponse.postValue(domainElections)
-                Log.d("de", domainElections.toString())
+                Log.d("ELECTIONSUCCESS", domainElections.toString())
             } else {
                 Log.d("", response.errorBody().toString())
             }
         }
     }
 
-    fun callForVoterInfo() {
+    fun callAPIForVoterInfo() {
         viewModelScope.launch {
-            CivicsApi.retrofitService.getVoterInfo()
-            Log.d("voterinfo", CivicsApi.retrofitService.getVoterInfo().toString())
+            val response = withContext(Dispatchers.IO) {
+                CivicsApi.retrofitService.getVoterInfo("7226", 94107)
+            }
+
+            if (response.isSuccessful) {
+                Log.d("VOTERSUCCESS", response.body().toString())
+            } else {
+                Log.d("ERROR", response.errorBody().toString())
+            }
         }
     }
 }

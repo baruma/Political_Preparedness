@@ -58,18 +58,18 @@ class DetailFragment : Fragment() {
         //TODO: The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
     }
 
-    private fun geoCodeLocation(location: Location): Address {
-        val geocoder = Geocoder(context, Locale.getDefault())
-        return geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                .map { address ->
-                    Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
-                }
-                .first()
-    }
+//    private fun geoCodeLocation(location: Location): Address {
+//        val geocoder = Geocoder(context, Locale.getDefault())
+//        return geocoder.getFromLocation(location.latitude, location.longitude, 1)
+//                .map { address ->
+//                    Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
+//                }
+//                .first()
+//    }
 
-    private fun hideKeyboard() {
-        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view!!.windowToken, 0)
-    }
+//    private fun hideKeyboard() {
+//        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+//    }
 
 }

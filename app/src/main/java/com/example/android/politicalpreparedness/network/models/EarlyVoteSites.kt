@@ -3,7 +3,7 @@ package com.example.android.politicalpreparedness.network.models
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class EarlyVotingSites (
+data class EarlyVoteSites (
     val address: Address? = null,
     val notes: String? = null,
     val voterServices: String? = null,
