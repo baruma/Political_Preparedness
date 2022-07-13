@@ -23,11 +23,13 @@ class ElectionsRepository(private val database: ElectionDatabase) {
                 domainElection.id,
                 domainElection.name,
                 domainElection.electionDay,
-                domainElection.division.toString()
+                domainElection.divisionId
             )
         }
         return database.electionDao.insertElections(databaseElectionEntities)
     }
+
+
 
 //    suspend fun saveElections(elections: List<Election>) {
 //        return database.electionDao.insertElections(elections)

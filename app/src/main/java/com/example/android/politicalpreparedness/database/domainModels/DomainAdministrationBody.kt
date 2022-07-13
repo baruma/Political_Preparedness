@@ -4,10 +4,10 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class DomainAdministration (
+data class DomainAdministrationBody(
     val name: String,
     val electionInfoURL: String,
     val votingLocationURL: String,
     val ballotInfoURL: String,
     val correspondenceAddress: DomainAddress? = null
-): Parcelable
+) : Parcelable

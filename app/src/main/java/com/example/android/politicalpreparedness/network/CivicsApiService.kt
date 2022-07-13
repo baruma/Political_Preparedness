@@ -36,7 +36,6 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-
 /**
  *  Documentation for the Google Civics API Service can be found at https://developers.google.com/civic-information/docs/v2
  */
@@ -47,10 +46,10 @@ interface CivicsApiService {
     @GET("elections?key=$key")
     suspend fun getElections(): Response<ElectionResponse>
 
+    //DONE: Add representatives API Call
     @GET("voterinfo?key=$key")
     suspend fun getVoterInfo(@Query("electionId") electionId: String?, @Query("address") address: Int): Response<VoterInfoResponse>
 
-    //TODO: Add representatives API Call
 }
 
 object CivicsApi {

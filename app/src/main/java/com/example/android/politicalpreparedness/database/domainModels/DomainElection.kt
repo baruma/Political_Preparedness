@@ -5,10 +5,9 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class DomainElection (
+data class DomainElection(
     val id: Int,
     val name: String,
     val electionDay: Date,
     val divisionId: String,
-    val division: DomainDivision?,
 ) : Parcelable

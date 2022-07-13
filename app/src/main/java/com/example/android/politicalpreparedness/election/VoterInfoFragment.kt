@@ -3,6 +3,7 @@ package com.example.android.politicalpreparedness.election
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,6 @@ import org.koin.android.ext.android.inject
 class VoterInfoFragment : Fragment() {
     //DONE: Add ViewModel values and create ViewModel
     private val voterInfoViewModel: VoterInfoViewModel by inject()
-    private val electionsViewModel: ElectionsViewModel by inject()
 
     lateinit var binding: FragmentVoterInfoBinding
     val args: VoterInfoFragmentArgs by navArgs()
@@ -41,8 +41,7 @@ class VoterInfoFragment : Fragment() {
         binding.stateBallot.setOnClickListener {
             getUrlFromIntent(requireView())
         }
-        // locations
-//        binding.stateLocations.text = args.pushElection.division!!.state!!.administrationBody!!.votingLocationURL
+        voterInfoViewModel.callAPIForVoterInfo()
 
         //TODO: Handle loading of URLs (voting location and ballot information)
 

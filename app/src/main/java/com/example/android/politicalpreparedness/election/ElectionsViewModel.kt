@@ -48,17 +48,19 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
         }
     }
 
-    fun callAPIForVoterInfo() {
-        viewModelScope.launch {
-            val response = withContext(Dispatchers.IO) {
-                CivicsApi.retrofitService.getVoterInfo("7226", 94107)
-            }
+    // So who's going to call the function to get the ballot and location links?
 
-            if (response.isSuccessful) {
-                Log.d("VOTERSUCCESS", response.body().toString())
-            } else {
-                Log.d("ERROR", response.errorBody().toString())
-            }
-        }
-    }
+//    fun callAPIForVoterInfo() {
+//        viewModelScope.launch {
+//            val response = withContext(Dispatchers.IO) {
+//                CivicsApi.retrofitService.getVoterInfo("7226", 94107)
+//            }
+//
+//            if (response.isSuccessful) {
+//                Log.d("VOTERSUCCESS", response.body().toString())
+//            } else {
+//                Log.d("ERROR", response.errorBody().toString())
+//            }
+//        }
+//    }
 }

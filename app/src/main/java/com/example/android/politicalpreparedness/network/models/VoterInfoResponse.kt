@@ -16,7 +16,7 @@ data class VoterInfoResponse (
     val earlyVoteSites: Array<EarlyVoteSites> = emptyArray(),
     val dropOffLocation: Array<DropOffLocations> = emptyArray(),
     val contests: Array<Contests> = emptyArray(),
-    val state: Array<State> = emptyArray(),
+    val state: List<State> = emptyList<State>(),
     val electionElectionOfficials: Array<ElectionOfficial>? = emptyArray(),
     val mailOnly: Boolean? = null
 )
