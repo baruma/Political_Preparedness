@@ -26,22 +26,24 @@ class VoterInfoFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
 
-        //DONE: Add binding values
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_voter_info, container, false)
         val root: View = binding.root
 
-        //DONE: Populate voter info -- hide views without provided data.
+        binding.electionName.title = args.pushElection.name
+        binding.electionDate.text = args.pushElection.electionDay.toString()
 
-//        binding.electionName.title = args.pushElection.name
-//        binding.electionDate.text = args.pushElection.electionDay.toString()
+        voterInfoViewModel.callAPIForVoterInfo()
+
         // ballots
         // TODO: Replace unsafe optional calls here.
         // TODO: Figure out how to get objects from database.  Flow: give room a domain object, room gets confused and asks for string, you must give it a string, which will find the domain object's room counterpart.
 //        binding.stateBallot.text = args.pushElection.division!!.state!!.administrationBody!!.ballotInfoURL
+
+        // TODO: Need to add hyperlink to shoot out code.
         binding.stateBallot.setOnClickListener {
             getUrlFromIntent(requireView())
         }
-        voterInfoViewModel.callAPIForVoterInfo()
+
 
         //TODO: Handle loading of URLs (voting location and ballot information)
 
@@ -56,6 +58,7 @@ class VoterInfoFragment : Fragment() {
         val intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse(url)
         startActivity(intent)
+
     }
 
     //TODO: Create method to load URL intents

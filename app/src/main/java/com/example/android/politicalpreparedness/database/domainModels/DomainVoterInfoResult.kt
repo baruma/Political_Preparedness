@@ -1,5 +1,8 @@
 package com.example.android.politicalpreparedness.database.domainModels
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class DomainVoterInfoResult(
     val kind: String = "civicinfo#voterInfoResponse",
     val election: DomainElection,

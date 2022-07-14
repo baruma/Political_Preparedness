@@ -34,12 +34,12 @@
             tools:text="12 November 2055"/>
 
         <!-- TODO: Add visual styling and content -->
-<!--        <TextView-->
-<!--            android:id="@+id/state_header"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/election_date"-->
-<!--            app:layout_constraintStart_toStartOf="@id/election_date" />-->
+        <TextView
+            android:id="@+id/state_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/election_date"
+            app:layout_constraintStart_toStartOf="@id/election_date" />
 
         <TextView
             android:id="@+id/election_information_header"

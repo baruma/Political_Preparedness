@@ -29,7 +29,8 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
 
     //TODO: Create functions to navigate to saved or upcoming election voter info
 
-    init {}
+    init {
+    }
 
     fun callAPIForElections() {
         viewModelScope.launch {
@@ -47,20 +48,4 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
             }
         }
     }
-
-    // So who's going to call the function to get the ballot and location links?
-
-//    fun callAPIForVoterInfo() {
-//        viewModelScope.launch {
-//            val response = withContext(Dispatchers.IO) {
-//                CivicsApi.retrofitService.getVoterInfo("7226", 94107)
-//            }
-//
-//            if (response.isSuccessful) {
-//                Log.d("VOTERSUCCESS", response.body().toString())
-//            } else {
-//                Log.d("ERROR", response.errorBody().toString())
-//            }
-//        }
-//    }
 }

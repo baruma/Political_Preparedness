@@ -21,7 +21,6 @@ interface ElectionOnClickInterface {
 
 class ElectionsFragment: Fragment() {
 
-    //DONE: Declare ViewModel
     private val electionsListViewModel: ElectionsViewModel by inject()
     lateinit var binding: FragmentElectionBinding
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -32,9 +31,6 @@ class ElectionsFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        //DONE: Add ViewModel values and create ViewModel
-//        binding = FragmentElectionBinding.inflate(inflater, container, false)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_election, container, false)
 
         val root: View = binding.root
@@ -64,7 +60,6 @@ class ElectionsFragment: Fragment() {
         electionsListViewModel.electionResponse.observe(viewLifecycleOwner, observer)
 
         electionsListViewModel.callAPIForElections()
-//        electionsListViewModel.callAPIForVoterInfo()
 
         return root
     }
