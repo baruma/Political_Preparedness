@@ -5,6 +5,7 @@ import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.database.ElectionsRepository
 import com.example.android.politicalpreparedness.election.ElectionsViewModel
 import com.example.android.politicalpreparedness.election.VoterInfoViewModel
+import com.example.android.politicalpreparedness.representative.RepresentativeViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -27,8 +28,9 @@ class PPApp: Application() {
     val mainModule = module {
         viewModel { ElectionsViewModel(get()) }
         viewModel { VoterInfoViewModel(get()) }
+        viewModel { RepresentativeViewModel(get()) }
+
         single { ElectionsRepository(get()) }
         single { ElectionDatabase.getInstance(this@PPApp) }
-//        single { AlarmScheduler(applicationContext, get()) }
     }
 }

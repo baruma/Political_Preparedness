@@ -6,6 +6,7 @@ import com.example.android.politicalpreparedness.network.jsonadapter.ElectionAda
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
+import com.example.android.politicalpreparedness.representative.model.Representative
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -18,7 +19,7 @@ import retrofit2.http.Query
 
 private const val BASE_URL = "https://www.googleapis.com/civicinfo/v2/"
 private const val API_KEY: String = BuildConfig.API_KEY
-// LEARN: With urls, you can pass parameters after the question mark
+// NOTE: With urls, you can pass parameters after the question mark
 // but it has to be [key]=[value]
 private const val key = API_KEY
 
@@ -36,19 +37,16 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
-/**
- *  Documentation for the Google Civics API Service can be found at https://developers.google.com/civic-information/docs/v2
- */
-
 interface CivicsApiService {
 
-    //DONE: Add elections API Call
     @GET("elections?key=$key")
     suspend fun getElections(): Response<ElectionResponse>
 
-    //DONE: Add representatives API Call
     @GET("voterinfo?key=$key")
     suspend fun getVoterInfo(@Query("electionId") electionId: String?, @Query("address") address: Int): Response<VoterInfoResponse>
+
+    @GET("representatives?key=$key")
+    suspend fun getRepresentatives(@Query("address") address: Int): Response<Representative>
 
 }
 
