@@ -28,3 +28,7 @@ data class Contests (
         val referendumBallotResponse: Array<String> = emptyArray(),
         val sources: Sources
 )
+
+/*
+What is @JsonClass anyways? It makes an adapter for your Kotlin classes.
+ */

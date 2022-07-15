@@ -7,3 +7,8 @@ data class Representative (
         val official: Official,
         val office: Office
 )
+
+private val serialized: String? = null
+
+@Transient
+private val not_serialized: String? = null

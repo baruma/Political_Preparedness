@@ -6,23 +6,32 @@ import android.location.Location
 import android.os.Bundle
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
+import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
+import com.example.android.politicalpreparedness.election.ElectionsViewModel
 import com.example.android.politicalpreparedness.network.models.Address
+import org.koin.android.ext.android.inject
 import java.util.Locale
 
-class DetailFragment : Fragment() {
+class RepresentativeFragment : Fragment() {
+
+    private val representativeViewModel: RepresentativeViewModel by inject()
+    lateinit var binding: FragmentRepresentativeBinding
 
     companion object {
         //TODO: Add Constant for Location request
     }
 
-    //TODO: Declare ViewModel
-
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        //TODO: Establish bindings
+        //DONE: Establish bindings
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_representative, container, false)
+        val root: View = binding.root
 
         //TODO: Define and assign Representative adapter
 
@@ -30,7 +39,7 @@ class DetailFragment : Fragment() {
 
         //TODO: Establish button listeners for field and location search
 
-        return view
+        return root
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -73,3 +82,12 @@ class DetailFragment : Fragment() {
 //    }
 
 }
+
+/*
+1. Make Representative API Call to get data into ViewModel
+2. Make Representative ViewHolder
+3. Make API call for Representatives
+4. Make Representative ListView Adapter
+
+X. Bind the XML to the RepresentativeFragment
+ */
