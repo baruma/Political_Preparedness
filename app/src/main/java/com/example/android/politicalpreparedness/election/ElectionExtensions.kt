@@ -1,11 +1,10 @@
 package com.example.android.politicalpreparedness.election
 
-import com.example.android.politicalpreparedness.database.domainModels.DomainDivision
-import com.example.android.politicalpreparedness.database.domainModels.DomainElection
-import com.example.android.politicalpreparedness.network.entitymodels.DivisionEntity
-import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
-import com.example.android.politicalpreparedness.network.models.ElectionResponse
-import java.sql.Date
+import com.example.android.politicalpreparedness.models.DomainDivision
+import com.example.android.politicalpreparedness.models.DomainElection
+import com.example.android.politicalpreparedness.database.entitymodels.DivisionEntity
+import com.example.android.politicalpreparedness.database.entitymodels.ElectionEntity
+import com.example.android.politicalpreparedness.network.models.GCIElectionResponse
 
 //fun ElectionEntity.asDomainModel(): DomainElection {
 //    return DomainElection(
@@ -36,6 +35,6 @@ fun DomainDivision.toDatabaseModel() : DivisionEntity {
     return DivisionEntity(id, country!!, this.state!!.name)
 }
 
-fun convertElectionResponseToDomainElection(electionResponse: List<ElectionResponse>) {
+fun convertElectionResponseToDomainElection(electionResponse: List<GCIElectionResponse>) {
 
 }

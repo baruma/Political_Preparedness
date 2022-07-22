@@ -28,9 +28,10 @@
         <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_1"
+            android:text="address line 1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints=""
+            android:autofillHints="address line 1"
             android:inputType="textPostalAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
@@ -39,6 +40,7 @@
         <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_2"
+            android:text="address line 2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:autofillHints=""
@@ -50,6 +52,7 @@
         <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/city"
+            android:text="city"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -63,6 +66,7 @@
         <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
+            android:text="state"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints=""
@@ -76,6 +80,7 @@
         <!-- TODO: Add visual styling and content -->
         <EditText
             android:id="@+id/zip"
+            android:text="zip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
@@ -88,6 +93,7 @@
         <!-- TODO: Add visual styling and label -->
         <Button
             android:id="@+id/button_search"
+            android:text="Find My Representatvies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/zip" />
@@ -95,6 +101,7 @@
         <!-- TODO: Add visual styling and content -->
         <Button
             android:id="@+id/button_location"
+            android:text="Use My Location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/button_search" />

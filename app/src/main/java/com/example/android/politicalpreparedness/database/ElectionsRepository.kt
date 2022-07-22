@@ -1,10 +1,8 @@
 package com.example.android.politicalpreparedness.database
 
-import com.example.android.politicalpreparedness.database.domainModels.DomainElection
+import com.example.android.politicalpreparedness.models.DomainElection
 import com.example.android.politicalpreparedness.election.asDatabaseModel
-import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
-import com.example.android.politicalpreparedness.network.entitymodels.entityRelationships.ElectionAndDivision
-import java.sql.Date
+import com.example.android.politicalpreparedness.database.entitymodels.ElectionEntity
 
 class ElectionsRepository(private val database: ElectionDatabase) {
 

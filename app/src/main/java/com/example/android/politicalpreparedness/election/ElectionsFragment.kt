@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.politicalpreparedness.R
-import com.example.android.politicalpreparedness.database.domainModels.DomainElection
+import com.example.android.politicalpreparedness.models.DomainElection
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
 import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
-import com.example.android.politicalpreparedness.network.entitymodels.ElectionEntity
+import com.example.android.politicalpreparedness.database.entitymodels.ElectionEntity
 import org.koin.android.ext.android.inject
 
 interface ElectionOnClickInterface {

@@ -8,7 +8,11 @@ class CivicsHttpClient: OkHttpClient() {
 
         const val API_KEY = "" //TODO: Place your API Key Here
 
-        fun getClient(): OkHttpClient {
+        val instance: OkHttpClient by lazy {
+            createClient()
+        }
+
+        private fun createClient(): OkHttpClient {
 
             return Builder()
                 .addInterceptor { chain ->

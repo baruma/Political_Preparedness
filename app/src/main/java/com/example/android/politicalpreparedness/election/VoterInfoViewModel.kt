@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.database.ElectionsRepository
-import com.example.android.politicalpreparedness.database.domainModels.DomainVoterInfoResult
+import com.example.android.politicalpreparedness.models.DomainVoterInfoResult
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.mapper.ApiToDomainMapper
 import kotlinx.coroutines.Dispatchers
@@ -14,10 +14,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewModel() {
-    //DONE: Create live data val for upcoming elections
-    private var _voterInfoResponse = MutableLiveData<List<DomainVoterInfoResult>>()
 
-    //DONE: Create live data val for saved elections
+    private var _voterInfoResponse = MutableLiveData<List<DomainVoterInfoResult>>()
     val voterInfoResponse: LiveData<List<DomainVoterInfoResult>>
         get() = _voterInfoResponse
 
@@ -37,7 +35,6 @@ class VoterInfoViewModel(private val repository: ElectionsRepository) : ViewMode
         your location services.  The only way you can access links is if zip matches the ones of
         the election - then you can get link data.
      */
-
 
     fun callAPIForVoterInfo() {
         viewModelScope.launch {

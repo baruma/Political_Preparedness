@@ -1,8 +1,24 @@
 package com.example.android.politicalpreparedness.representative
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.android.politicalpreparedness.database.ElectionsRepository
+import com.example.android.politicalpreparedness.models.DomainVoterInfoResult
+import com.example.android.politicalpreparedness.network.CivicsApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class RepresentativeViewModel: ViewModel() {
+class RepresentativeViewModel(private val repository: ElectionsRepository): ViewModel() {
+
+    private var _representative = MutableLiveData<List<DomainVoterInfoResult>>()
+    val representative: LiveData<List<DomainVoterInfoResult>>
+        get() = _representative
+
+    init {}
 
     //TODO: Establish live data for representatives and address
 
@@ -22,5 +38,24 @@ class RepresentativeViewModel: ViewModel() {
     //TODO: Create function get address from geo location
 
     //TODO: Create function to get address from individual fields
+
+    // TODO : LEFT OFF HERE.  NEED TO CALL THIS FUNCTION SOMEWHERE.  FINISH THE ERRORS WITH MAPPING THAT ARE BOUND TO COME.  DON'T NEED TO SAVE THE DATA.
+    // TODO: GOT TO SET UP LOCATION SERVICES TO GRAB YOUR INFO.
+    // Required value 'id' missing at $.divisions
+
+    fun callAPIForRepresentatives() {
+        viewModelScope.launch {
+            val response = withContext(Dispatchers.IO) {
+                CivicsApi.retrofitService.getRepresentatives(94107)
+            }
+            if (response.isSuccessful) {
+//                val representatives =
+//                    ApiToDomainMapper.mapFromAPIRepresentativeToDomainRepresentative(response.body()!!, State("ma", AdministrationBody("", "", "", "", Address("", "", "", "", "", ""))))
+                Log.d("payload", response.toString())
+            } else {
+                Log.d("", response.errorBody().toString())
+            }
+        }
+    }
 
 }

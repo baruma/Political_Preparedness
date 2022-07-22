@@ -1,7 +1,6 @@
 package com.example.android.politicalpreparedness.election.adapter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
-import com.example.android.politicalpreparedness.database.domainModels.DomainElection
+import com.example.android.politicalpreparedness.models.DomainElection
 import com.example.android.politicalpreparedness.databinding.ElectionViewHolderBinding
 import com.example.android.politicalpreparedness.election.ElectionOnClickInterface
 import com.example.android.politicalpreparedness.election.ElectionsFragmentDirections
-import com.example.android.politicalpreparedness.election.ElectionsViewModel
 import java.util.*
 
 // Are there good alternatives to passing viewmodels to adapters from their corresponding fragments?

@@ -1,8 +1,6 @@
 package com.example.android.politicalpreparedness.network.apimodels
 
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
-import com.example.android.politicalpreparedness.network.models.Division
+import com.example.android.politicalpreparedness.models.DomainElection
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.util.*
@@ -16,3 +14,7 @@ data class ElectionAPIModel (
     @Json(name="ocdDivisionId")
     val division: String
 )
+
+fun ElectionAPIModel.toDomainModel(): DomainElection {
+    return DomainElection(id, name, electionDay, division)
+}

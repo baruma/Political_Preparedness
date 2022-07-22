@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.database.ElectionsRepository
-import com.example.android.politicalpreparedness.database.domainModels.DomainElection
+import com.example.android.politicalpreparedness.models.DomainElection
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.mapper.ApiToDomainMapper
 import kotlinx.coroutines.Dispatchers
@@ -29,8 +29,7 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
 
     //TODO: Create functions to navigate to saved or upcoming election voter info
 
-    init {
-    }
+    init { }
 
     fun callAPIForElections() {
         viewModelScope.launch {
@@ -39,7 +38,7 @@ class ElectionsViewModel(private val repository: ElectionsRepository) : ViewMode
             }
             if (response.isSuccessful) {
                 val domainElections =
-                    ApiToDomainMapper.mapFromElectionResponseToDomainElection(response.body()!!)
+                    ApiToDomainMapper.mapFromCGIElectionResponseToElection(response.body()!!)
                 // map this from election response to domain election list
                 _electionResponse.postValue(domainElections)
                 Log.d("ELECTIONSUCCESS", domainElections.toString())
